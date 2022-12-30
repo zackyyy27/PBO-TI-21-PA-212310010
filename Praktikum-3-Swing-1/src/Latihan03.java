@@ -1,43 +1,33 @@
 import javax.swing.JOptionPane;
 
 public class Latihan03 {
-
 	public static void main(String[] args) {
-		Biodata bio = new Biodata();
+		Biodata myBio = new Biodata();
+		JOptionPane jop = new JOptionPane();
 		
-		JOptionPane.showMessageDialog(null, "Selamat Datang!");
-		final String WARN = "PERINGATAN!";
+		String Fullname = jop.showInputDialog(null, "Masukkan Nama Lengkap");
+		myBio.setFullname(Fullname);
 		
-		String nama = JOptionPane.showInputDialog(null, "Masukkan nama lengkap Anda:", "Form Nama", JOptionPane.QUESTION_MESSAGE);
+		String Age = jop.showInputDialog(null, "Masukkan usia Anda");
+		myBio.setAge(Age);
 		
-		if(nama.isEmpty()) {
-			JOptionPane.showMessageDialog(null, "Field Form Nama tidak boleh kosong!", WARN, JOptionPane.WARNING_MESSAGE);
-			System.exit(0);
+		String Alamat = jop.showInputDialog(null, "Masukkan alamat Anda");
+		myBio.setAlamat(Alamat);
+		
+		
+		if(Fullname.equals("") || Age.equals("") || Alamat.equals("") ) {
+			jop.showMessageDialog(null, "Field [fullname/usia/alamat] tidak boleh kosong", "Error Message", jop.ERROR_MESSAGE);
+		}else if(Alamat.length() <= 10) {
+			jop.showMessageDialog(null, "“Masukkan alamat minimum 10 karakter!", "WARNING!", jop.WARNING_MESSAGE);
+		}else {
+
+	        try { 
+	          int strAge= Integer.parseInt(Age);
+	          jop.showMessageDialog(null, myBio.getFullname() + "\n" + myBio.getAge() + "\n" + myBio.getAlamat());
+
+	        } catch(NumberFormatException e) { 
+	          JOptionPane.showMessageDialog(null, "Isian Usia harus angka!", "ERROR!", jop.ERROR_MESSAGE);
+	        }
 		}
-		
-		
-		String usia = JOptionPane.showInputDialog(null, "Masukkan usia Anda:", "Form Usia", JOptionPane.QUESTION_MESSAGE);
-		final String REG_NUMERIK = "[0-9]+";
-		
-		if(usia.isEmpty()) {
-			JOptionPane.showMessageDialog(null, "Field Form Usia tidak boleh kosong!", WARN, JOptionPane.WARNING_MESSAGE);
-		} else if(!usia.matches(REG_NUMERIK)) {
-			JOptionPane.showMessageDialog(null, "Isian Form Usia harus numerik!", WARN, JOptionPane.WARNING_MESSAGE);
-		}
-		
-		
-		String alamat = JOptionPane.showInputDialog(null, "Masukkan alamat Anda:", "Form Alamat", JOptionPane.QUESTION_MESSAGE);
-		
-		if(alamat.isEmpty()) {
-			JOptionPane.showMessageDialog(null, "Field Form Alamat tidak boleh kosong!", WARN, JOptionPane.WARNING_MESSAGE);
-		} else if(alamat.length() < 10) {
-			JOptionPane.showMessageDialog(null, "Masukkan alamat minimum 10 karakter!", WARN, JOptionPane.WARNING_MESSAGE);
-		}
-		
-		int pUsia = Integer.parseInt(usia);
-		
-		bio.setData(nama, pUsia, alamat);
-		bio.getData();
 	}
-	
 }
