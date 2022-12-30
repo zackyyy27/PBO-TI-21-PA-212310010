@@ -1,23 +1,24 @@
 import javax.swing.JOptionPane;
-
 public class Biodata {
+	private String Fullname, Alamat, Age;
 	
-	private String fullName, alamat;
-	private int usia;
-	
-	void setData(String valNama, int valUsia, String valAlamat) {
-		fullName = valNama;
-		usia = valUsia;
-		alamat = valAlamat;
+	public String getFullname(){
+		return Fullname;
 	}
-	
-	void getData() {
-		String output = "Biodata " + fullName + "\n\n"
-					  + "Nama : " + fullName + "\n"
-					  + "Usia : " + usia + "\n"
-					  + "Alamat : " + alamat + "\n";
-		
-		JOptionPane.showMessageDialog(null, output, "Data Biodata", JOptionPane.INFORMATION_MESSAGE);
+	public void setFullname(String fullname){
+		Fullname=fullname;
 	}
-	
+	public String getAlamat(){
+		return Alamat;
+	}
+	public void setAlamat(String alamat){
+		Alamat=alamat;
+	}
+	public String getAge(){
+		return Age;
+	}
+	public void setAge(String age) {
+		Age=age;
+	}
+
 }
